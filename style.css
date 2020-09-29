@@ -1,0 +1,14 @@
+#scorepage {
+    background: rgb(199, 214, 178);
+    height: 400px;
+    width: 50%;
+}
+#correct{
+    font-weight: bold;
+}
+#home {
+    /* margin: auto; */
+    background: wheat;
+    width: 50%;
+    
+}
