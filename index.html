@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz Game</title>
+
+    <!-- bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- introductory message -->
+    <div id="home" class="container m-5 p-5 text-center">
+        <div class="d-flex flex-column justify-content-center">
+            <h1>Code Quiz</h1>
+            <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita debitis dolore adipisci
+                nulla iusto quibusdam incidunt illum vitae perferendis non, quis magnam inventore recusandae suscipit.
+            </p>
+            <!-- <a href="game.html"><button class="btn btn-secondary btn-lg mb-3">start quiz</button></a>     -->
+            <button class="btn btn-success btn-lg" id="startBtn">Start Quiz</button>
+        </div>
+    </div>
+    <!-- displaying the timeLeft on top -->
+    <div id="timer" class="d-none container w-50 mx-auto">
+        <p class="lead float-right"><span id="timeleft">60</span> seconds left </p>
+    </div>
+    <!-- game format and content -->
+    <div id="main" class="d-none m-5 p-5 bg-light w-50 mx-auto">
+        <div class="container ">
+            <div class="row bg-secondary text-white justify-content-center">
+                <div class="col-8 ">
+                    <p class="lead" id="question">The question will be displayed here</p>
+                </div>
+            </div>
+
+            <div class="row my-5 ">
+                <div class="col-3">
+                    <!-- <button id="choice1" class="btn btn-secondary text-white">choice 1</button> -->
+                    <button id="choice1" class="btn btn-secondary text-white" onclick="checkAnswer(0)">choice 1</button>
+                </div>
+                <div class="col-3">
+                    <!-- <button id="choice2" class="btn btn-secondary text-white">choice 2</button> -->
+                    <button id="choice2" class="btn btn-secondary text-white" onclick="checkAnswer(1)">choice 2</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <!-- <button id="choice3" class="btn btn-secondary text-white">choice 3</button> -->
+                    <button id="choice3" class="btn btn-secondary text-white" onclick="checkAnswer(2)">choice 3</button>
+                </div>
+                <div class="col-3">
+                    <!-- <button id="choice4" class="btn btn-secondary text-white">choice 4</button> -->
+                    <button id="choice4" class="btn btn-secondary text-white" onclick="checkAnswer(3)">choice 4</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="evaluation" class="d-none container m-3 p-1 bg-light w-50 mx-auto">
+        <p class="lead" id="correct"></p>
+    </div>
+    <div id="scorepage" class="d-none container text-center mt-5">
+        <div id="end" class="">
+            <h1>Your Score is <span id="finalScore"></span></h1>
+            <form class="form-inline">
+                <form action="" class="form-group">
+                    <label for="initials">
+                        <h3>Your Initials</h3>
+                    </label>
+                    <input type="text" name="initials" id="initials" placeholder="initials" />
+                    <button type="submit" class="btn btn-success btn-sm mb-4 ml-3" id="saveScoreBtn">
+                        Save
+                    </button>
+                </form>
+            </form>
+
+
+
+        </div>
+    </div>
+    <div id="highScores" class="d-none">
+        <div id="showscores">
+            <h3>Lead Scorers</h3>
+        </div>
+        <div>
+            <a class="btn btn-info btn-lg" href="./play.html">Play Again</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
