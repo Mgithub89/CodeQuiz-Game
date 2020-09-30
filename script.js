@@ -1,3 +1,5 @@
+
+//Questions Array (6 questions)
 var myQuestions = [
     {
         question: "To make your website mobile friendly, you can make your website",
@@ -31,6 +33,7 @@ var myQuestions = [
     }
 ]
 
+//refering all the element nedded
 const timeEl = document.querySelector('#timeleft');
 const startBtn = document.querySelector('#startBtn');
 const questionEl = document.querySelector("#question");
@@ -52,12 +55,14 @@ const finalScoreEL = document.querySelector("#finalScore");
 const highScoresDiv = document.querySelector("#highScores");
 const showscoresEL = document.querySelector("#showscores");
 
+//declering some initial variables
 let currentQuestion = 0;
 let score = 0;
 let availableQuestions = [];
 let timeLeft = 60;
-// let scoresArr = [];
 
+
+//function to start the game 
 function startQuiz() {
     homeEl.classList.add("d-none");
     timerEl.classList.remove("d-none");
@@ -66,6 +71,7 @@ function startQuiz() {
     let timer = setInterval(() => {
         timeLeft--;
         timeEl.textContent = timeLeft;
+        // changeing time left to red when 10 second left
         if (timeLeft <= 10) {
             timeEl.parentElement.style.color = "red";
         }
@@ -76,6 +82,8 @@ function startQuiz() {
     }, 1000);
     displayQuestion();
 }
+
+// function to display the Questions
 function displayQuestion() {
     if (currentQuestion < myQuestions.length) {
         questionEl.textContent = myQuestions[currentQuestion].question;
@@ -88,23 +96,8 @@ function displayQuestion() {
         return;
     }
 }
-//     checkAnswer();
-//     mainEl.addEventListener("click", function (event) {
-//         let element = event.target;
-//         if (element.matches("button")) {
-//             if (element == myQuestions[currentQuestion].answer) {
-//                 score += 10;
-//                 correctEL.textContent = "correct";
-//             } else {
-//                 timeLeft -= 1;
-//                 correctEL.textContent = "incorrect";
-//             }
-//         }
-//         currentQuestion++;
-//         displayQuestion();
-//     })
-// }
 
+// function to check answer 
 function checkAnswer(answer) {
 
     if (answer == myQuestions[currentQuestion].answer) {
@@ -121,6 +114,7 @@ function checkAnswer(answer) {
     displayQuestion();
 }
 
+// function to end the game
 function endGame() {
     timeLeft = 0;
     finalScoreEL.textContent = score;
@@ -128,18 +122,9 @@ function endGame() {
     evalEl.classList.add("d-none");
     mainEl.classList.add("d-none");
     scorepageEl.classList.remove("d-none");
-
-    // localStorage.setItem("score", score);
-    // return location.assign("scores.html");
 }
-// savescoreBtn.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     highScoresDiv.classList.remove("d-none")
-//     scorepageEl.classList.add("d-none")
-//     let initials = initialsInput.value;
-//     scoresArr.push({ name: initials, yourScore: score });
-//     // console.log(scoresArr); 
-// })
+
+// Event listener to save the score 
 savescoreBtn.addEventListener("click", function (event) {
     let scoresArr;
     event.preventDefault();
@@ -147,7 +132,6 @@ savescoreBtn.addEventListener("click", function (event) {
     scorepageEl.classList.add("d-none")
     let initials = initialsInput.value;
 
-    // console.log(scoresArr);     
     scoresArr = JSON.parse(localStorage.getItem("scores"));
     if (!scoresArr) {
         scoresArr = [];
@@ -159,6 +143,7 @@ savescoreBtn.addEventListener("click", function (event) {
     }
     getScores();
 });
+
 function getScores() {
     var scoresArr = JSON.parse(localStorage.getItem("scores")) || [];
     console.log(scoresArr)

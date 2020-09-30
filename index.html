@@ -37,9 +37,9 @@
 
     <div id="home" class="container m-5 p-5 text-center mx-auto">
         <div class="d-flex flex-column justify-content-center">
-            <h1>Welcome</h1>
+            <h1>Welcome!</h1>
             <h3>Code Quiz</h3>
-            <!-- <a href="game.html"><button class="btn btn-secondary btn-lg mb-3">start quiz</button></a>     -->
+
             <p class="text-center text-bold">Review your coding skills with this 6 multiple choice questions in 60
                 seconds.
                 Correct answer will give you 10 point. But
@@ -48,10 +48,10 @@
         </div>
     </div>
 
-    <!-- displaying the timer on top -->
+
 
     <div id="timer" class="d-none container w-50 mx-auto">
-        <p class="lead float-right"><span id="timeleft">90</span> seconds left </p>
+        <p class="lead float-right"><span id="timeleft">60</span> seconds left </p>
     </div>
 
     <!-- question and multiple choice content format  -->
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <!-- <div class="row my-5 "> -->
+
             <div class=" my-4">
                 <button id="choice1" class="btn btn-info text-white" onclick="checkAnswer(0)">choice
                     1</button>
@@ -73,8 +73,7 @@
                 <button id="choice2" class="btn btn-info text-white" onclick="checkAnswer(1)">choice
                     2</button>
             </div>
-            <!-- </div> -->
-            <!-- <div class="row"> -->
+
             <div class=" my-4">
                 <button id="choice3" class="btn btn-info text-white" onclick="checkAnswer(2)">choice
                     3</button>
@@ -83,14 +82,14 @@
                 <button id="choice4" class="btn btn-info text-white" onclick="checkAnswer(3)">choice
                     4</button>
             </div>
-            <!-- </div> -->
+
         </div>
     </div>
     <div id="evaluation" class="d-none container  p-1 bg-light w-50">
         <h3 class="lead" id="correct"></h3>
     </div>
 
-    <!-- score storage page -->
+    <!-- //initial input page -->
     <div id="scorepage" class="d-none container text-center mt-5">
         <div id="end" class="">
             <h1>Your Score is <span id="finalScore"></span></h1>
