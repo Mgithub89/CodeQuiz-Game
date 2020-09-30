@@ -157,15 +157,25 @@ savescoreBtn.addEventListener("click", function (event) {
         scoresArr.push({ name: initials, yourScore: score });
         localStorage.setItem("scores", JSON.stringify(scoresArr));
     }
+    getScores();
 });
+function getScores() {
+    var scoresArr = JSON.parse(localStorage.getItem("scores")) || [];
+    console.log(scoresArr)
+    scoresArr.forEach(function (score) {
+        // console.log(score);
+        let newScoreEl = document.createElement("p");
+        newScoreEl.textContent = score.name + " - " + score.yourScore;
+        showscoresEL.appendChild(newScoreEl);
+    })
+}
+// var scoresArr = JSON.parse(localStorage.getItem("scores"));
+// scoresArr.forEach(function (score) {
 
-var scoresArr = JSON.parse(localStorage.getItem("scores"));
-scoresArr.forEach(function (score) {
-
-    let newScoreEl = document.createElement("p");
-    newScoreEl.textContent = score.name + " - " + score.yourScore;
-    showscoresEL.appendChild(newScoreEl);
-})
+//     let newScoreEl = document.createElement("p");
+//     newScoreEl.textContent = score.name + " - " + score.yourScore;
+//     showscoresEL.appendChild(newScoreEl);
+// })
 
 playagainEl.addEventListener("click", function () {
     return location.assign("index.html");
