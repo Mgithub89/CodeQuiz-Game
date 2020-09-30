@@ -82,6 +82,8 @@ function startQuiz() {
     }, 1000);
     displayQuestion();
 }
+//click event listener to start the Quiz
+startBtn.addEventListener("click", startQuiz);
 
 // function to display the Questions
 function displayQuestion() {
@@ -92,29 +94,39 @@ function displayQuestion() {
         choice3.textContent = myQuestions[currentQuestion].choices[2];
         choice4.textContent = myQuestions[currentQuestion].choices[3];
     } else {
-        endGame();
-        return;
+        setTimeout(function () {
+            endGame();
+            return;
+        }, 1000)
     }
 }
 
-// function to check answer 
+// function to check answer and display next questions 
 function checkAnswer(answer) {
 
     if (answer == myQuestions[currentQuestion].answer) {
         score += 10;
         correctEL.textContent = "correct";
         correctEL.style.color = "green";
+        setTimeout(function () {
+            correctEL.textContent = "";
+        }, 2000)
+
     } else {
         timeLeft -= 10;
         correctEL.textContent = "incorrect";
         correctEL.style.color = "red";
+        setTimeout(function () {
+            correctEL.textContent = "";
+        }, 2000)
+
     }
 
     currentQuestion++;
     displayQuestion();
 }
 
-// function to end the game
+// function to end the game when timeleft = 0
 function endGame() {
     timeLeft = 0;
     finalScoreEL.textContent = score;
@@ -124,7 +136,7 @@ function endGame() {
     scorepageEl.classList.remove("d-none");
 }
 
-// Event listener to save the score 
+// Event listener to save the score and initials in localStorage
 savescoreBtn.addEventListener("click", function (event) {
     let scoresArr;
     event.preventDefault();
@@ -146,24 +158,18 @@ savescoreBtn.addEventListener("click", function (event) {
 
 function getScores() {
     var scoresArr = JSON.parse(localStorage.getItem("scores")) || [];
-    console.log(scoresArr)
+
     scoresArr.forEach(function (score) {
-        // console.log(score);
+
         let newScoreEl = document.createElement("p");
         newScoreEl.textContent = score.name + " - " + score.yourScore;
+
         showscoresEL.appendChild(newScoreEl);
     })
 }
-// var scoresArr = JSON.parse(localStorage.getItem("scores"));
-// scoresArr.forEach(function (score) {
 
-//     let newScoreEl = document.createElement("p");
-//     newScoreEl.textContent = score.name + " - " + score.yourScore;
-//     showscoresEL.appendChild(newScoreEl);
-// })
-
+//listining click to play again button to retry the quiz
 playagainEl.addEventListener("click", function () {
     return location.assign("index.html");
 });
 
-startBtn.addEventListener("click", startQuiz);
